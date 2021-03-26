@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 # Set hosts to allow any app on Heroku and the local testing URL
-ALLOWED_HOSTS = ['.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -82,11 +82,14 @@ WSGI_APPLICATION = 'locallibrary.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'local_library',
+        'USER': 'local_library',
+        'PASSWORD': 'asdf1234',
+        'HOST': 'codedeploy-db.civiefqva2ca.ap-northeast-2.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -131,9 +134,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # Heroku: Update database configuration from $DATABASE_URL.
-import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
 
 
 
