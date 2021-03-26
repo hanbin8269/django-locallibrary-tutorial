@@ -1,0 +1,23 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /opt/django-locallibrary-tutorial
+hooks:
+  AfterInstall:
+    - location: scripts/InstallLibrary.sh
+      timeout: 60
+      runas: root
+    - location: scripts/ConfigureDjango.sh
+      timeout: 300
+      runas: root
+    - location: scripts/ConfigureServer.sh
+      runas: root
+  ApplicationStart:
+    - location: scripts/RestartServer.sh
+      timeout: 60
+      runas: root
+  ApplicationStop:
+    - location: scripts/StopServer.sh
+      timeout: 60
+      runas: root
