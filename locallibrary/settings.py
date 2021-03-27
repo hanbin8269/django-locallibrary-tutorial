@@ -86,7 +86,7 @@ DATABASES = {
         'NAME': 'local_library',
         'USER': 'local_library',
         'PASSWORD': 'asdf1234',
-        'HOST': 'codedeploy-db.civiefqva2ca.ap-northeast-2.rds.amazonaws.com',
+        'HOST': 'crd3a38y5wazzw.civiefqva2ca.ap-northeast-2.rds.amazonaws.com',
         'PORT': '5432',
     }
 }
